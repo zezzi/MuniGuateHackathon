@@ -1,10 +1,6 @@
 package com.hackaton.municiclismo;
-
 import java.util.ArrayList;
 
-import com.hackaton.municiclismo.data.DBAdapter;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,7 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class DistanceActivity extends ActionBarActivity {
+import com.hackaton.municiclismo.R;
+import com.hackaton.municiclismo.data.DBAdapter;
+
+
+public class RouteActivity extends ActionBarActivity {
 	
 	private MuniApplication appState;
 	private DBAdapter db;
@@ -26,11 +26,11 @@ public class DistanceActivity extends ActionBarActivity {
 		appState = ((MuniApplication)getApplicationContext()); 
 		db = appState.getDb();
 		db.open();
-		getSupportActionBar().setTitle("Seleccionar Distancia");
+		getSupportActionBar().setTitle("Seleccionar Ruta");
 		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#89e02f")));
 		ListView Listado = (ListView)findViewById(R.id.distanciasListado);
 		ArrayList<String> datos= datosLista();
-		ListAdapter adaptador = new ListAdapter(appState, R.layout.simple_layout, datos,"distanceList");
+		ListAdapter adaptador = new ListAdapter(appState, R.layout.simple_layout, datos,"simpleList");
         Listado.setAdapter(adaptador);  
         Listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

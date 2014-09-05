@@ -2,6 +2,7 @@ package com.hackaton.municiclismo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 import com.hackaton.municiclismo.data.Activities;
 import com.hackaton.municiclismo.data.DBAdapter;
 
@@ -52,7 +53,17 @@ public class BicicletearFragment extends Fragment{
 	        Listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            @Override
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) { 
-	            	
+	            	String listViewSelect= (String) parent.getItemAtPosition(position);
+	            	if(listViewSelect.equals("Ruta")){
+	            		Intent seleccionarDistancia=new Intent(appState,RouteActivity.class);
+	            		startActivity(seleccionarDistancia);
+	            	}else if(listViewSelect.equals("Notificaciones")){
+	            		Intent seleccionarDistancia=new Intent(appState,Notifications.class);
+	            		startActivity(seleccionarDistancia);
+	            	}else{
+	            		Intent seleccionarDistancia=new Intent(appState,DistanceActivity.class);
+	            		startActivity(seleccionarDistancia);
+	            	}
 	            } 
 	            
 	 		});	

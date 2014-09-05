@@ -41,6 +41,9 @@
          <activity android:name="com.hackaton.municiclismo.GPSActivity"></activity>
          <activity android:name="com.hackaton.municiclismo.StopWatch"></activity>
          <activity android:name="com.hackaton.municiclismo.FinishActivity"></activity>
+          <activity android:name="com.hackaton.municiclismo.DistanceActivity"></activity>
+          <activity android:name="com.hackaton.municiclismo.Notifications"></activity>
+          <activity android:name="com.hackaton.municiclismo.RouteActivity"></activity>
          <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />

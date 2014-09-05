@@ -37,13 +37,18 @@ public class ListAdapter extends ArrayAdapter
         v  = inflator.inflate(MytextView, null, true);
         TextView t = (TextView)v.findViewById(R.id.textoList);
         ImageView tt=(ImageView)v.findViewById(R.id.imageList);
-        if(l.get(position).equals("Ruta")){
-        	tt.setImageResource(R.drawable.routeshort);
-        }else if(l.get(position).equals("Notificaciones")){
-        	tt.setImageResource(R.drawable.alarm);
+       
+        if(type.equals("simpleList")){
+        	if(l.get(position).equals("Ruta")){
+        		tt.setImageResource(R.drawable.routeshort);
+        	}else if(l.get(position).equals("Notificaciones")){
+        		tt.setImageResource(R.drawable.alarm);
         
-        }else{
-        	tt.setImageResource(R.drawable.routebike);
+        	}else{
+        		tt.setImageResource(R.drawable.routebike);
+        	}
+        }else if(type.equals("distanceList")){
+        	tt.setImageResource(R.drawable.biki);
         }
         t.setText(l.get(position));
         return v;
