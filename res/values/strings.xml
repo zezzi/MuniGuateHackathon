@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MuniCiclismo</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="domain">Ciclismo Guate</string>
+    <string name="action_settings">Settings</string>
+    <string name="api_key_debug">AIzaSyBOfdgajKhbkBQjctnphu3qT709KQLMXHU</string>
+    <string name="ok">OK</string>
+     <string name="cancel">Cancel</string>
+     <string name="workout">Padawan 200Exp</string>
+     <string name="workout_subtitle">200pts a Experto</string>
+     <string name="start">  Start  </string>
+     
+
+</resources>
