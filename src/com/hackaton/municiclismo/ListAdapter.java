@@ -49,6 +49,16 @@ public class ListAdapter extends ArrayAdapter
         	}
         }else if(type.equals("distanceList")){
         	tt.setImageResource(R.drawable.biki);
+        }else if(type.equals("notificationList")){
+        	tt.setVisibility(View.GONE);
+        }else if(type.equals("routeList")){
+        	if(l.get(position).equals("Periferico")||l.get(position).equals("Zona 15")){
+        		tt.setImageResource(R.drawable.ciclistas2);
+        	}else if(l.get(position).equals("custom")){
+        		tt.setImageResource(R.drawable.bikisolo);
+        	}else{
+        		tt.setImageResource(R.drawable.ciclistas);
+        	}
         }
         t.setText(l.get(position));
         return v;

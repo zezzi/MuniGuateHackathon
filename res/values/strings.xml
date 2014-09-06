@@ -11,6 +11,8 @@
      <string name="workout">Padawan 200Exp</string>
      <string name="workout_subtitle">200pts a Experto</string>
      <string name="start">  Start  </string>
+     <string name="login_txt">  Login  </string>
+     <string name="reset_password"> Reset Password    </string>
      
 
 </resources>

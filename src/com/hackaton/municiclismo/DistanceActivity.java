@@ -39,6 +39,7 @@ public class DistanceActivity extends ActionBarActivity {
             	String distanciaSeleccionada= (String) parent.getItemAtPosition(position);
             	pantallaInicial.putExtra("distancia",distanciaSeleccionada);
             	Log.d("distancia",distanciaSeleccionada);
+            	//finish();
             	startActivity(pantallaInicial);
             	
             } 

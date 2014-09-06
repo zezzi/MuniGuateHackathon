@@ -30,7 +30,7 @@
         android:name="MuniApplication"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginScreen"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,12 +38,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.hackaton.municiclismo.MainActivity"></activity>
          <activity android:name="com.hackaton.municiclismo.GPSActivity"></activity>
          <activity android:name="com.hackaton.municiclismo.StopWatch"></activity>
          <activity android:name="com.hackaton.municiclismo.FinishActivity"></activity>
           <activity android:name="com.hackaton.municiclismo.DistanceActivity"></activity>
           <activity android:name="com.hackaton.municiclismo.Notifications"></activity>
           <activity android:name="com.hackaton.municiclismo.RouteActivity"></activity>
+           <activity android:name="com.hackaton.municiclismo.DetailActivity"></activity>
          <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />

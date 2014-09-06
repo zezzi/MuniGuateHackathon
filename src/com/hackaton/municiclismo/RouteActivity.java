@@ -30,15 +30,16 @@ public class RouteActivity extends ActionBarActivity {
 		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#89e02f")));
 		ListView Listado = (ListView)findViewById(R.id.distanciasListado);
 		ArrayList<String> datos= datosLista();
-		ListAdapter adaptador = new ListAdapter(appState, R.layout.simple_layout, datos,"simpleList");
+		ListAdapter adaptador = new ListAdapter(appState, R.layout.simple_layout_horizontal, datos,"routeList");
         Listado.setAdapter(adaptador);  
         Listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) { 
             	Intent pantallaInicial=new Intent(appState,MainActivity.class);
             	String distanciaSeleccionada= (String) parent.getItemAtPosition(position);
-            	pantallaInicial.putExtra("distancia",distanciaSeleccionada);
-            	Log.d("distancia",distanciaSeleccionada);
+            	pantallaInicial.putExtra("ruta",distanciaSeleccionada);
+            	Log.d("ruta",distanciaSeleccionada);
+            	//finish();
             	startActivity(pantallaInicial);
             	
             } 
@@ -50,9 +51,12 @@ public class RouteActivity extends ActionBarActivity {
 	
 	public ArrayList<String> datosLista(){   
      	 ArrayList<String> datos = new ArrayList<String>();
-          for(int i=0;i<200;i=i+5){
-        	  datos.add(i+" Km ");
-          }
+     	  datos.add("custom");
+          datos.add("Periferico");
+          datos.add("Zona 14");
+          datos.add("Zona 15");
+          datos.add("liberacion");
+          
           return datos;
      }
 

@@ -22,6 +22,7 @@ public class BicicletearFragment extends Fragment{
 	
 	private MuniApplication appState;
 	private DBAdapter db;
+	ArrayList<String> datos;
 	
 	 @Override
 	  public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,10 @@ public class BicicletearFragment extends Fragment{
 	     appState = ((MuniApplication) getActivity().getApplicationContext());   
 		 db = appState.getDb();
 		 db.open();
+		 
+		 
+		 
+		 
 	  }
 	 
 	 @Override
@@ -36,6 +41,7 @@ public class BicicletearFragment extends Fragment{
 	            Bundle savedInstanceState) {
 	        View rootView = inflater.inflate(R.layout.fragment_bicicletear, container,
 	                false);
+	        
 	        Button iniciarActividad=(Button)rootView.findViewById(R.id.seleccionarDistancia);
 			iniciarActividad.setOnClickListener(new View.OnClickListener() {
 	            public void onClick(View v) {
@@ -47,7 +53,16 @@ public class BicicletearFragment extends Fragment{
 	            }
 	      });
 			ListView Listado = (ListView)rootView.findViewById(R.id.datosK);
-			ArrayList<String> datos= datosLista();
+			 datos= datosLista();
+			 try{
+				 Bundle extras=getActivity().getIntent().getExtras();
+				 String distanceChosed=extras.getString("distancia");
+				 if(distanceChosed!=null){
+					 datos.set(0, distanceChosed);
+				 }
+			 }catch(Exception ex){
+				 
+			 }
 			ListAdapter adaptador = new ListAdapter(appState, R.layout.simple_layout, datos,"simpleList");
 	        Listado.setAdapter(adaptador);  
 	        Listado.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="unspecified" >
+        <source path="/Users/zezzi/class/eclipse/MuniCiclismo/build/intermediates/exploded-aar/eclipse/google-play-services_lib/unspecified/assets" />
+    </dataSet>
+    <dataSet config="unspecified" >
+        <source path="/Users/zezzi/class/eclipse/MuniCiclismo/build/intermediates/exploded-aar/eclipse/appcompat_v7_2/unspecified/assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="/Users/zezzi/class/eclipse/MuniCiclismo/assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/zezzi/class/eclipse/MuniCiclismo/build-types/debug/assets" />
+    </dataSet>
+
+</merger>
