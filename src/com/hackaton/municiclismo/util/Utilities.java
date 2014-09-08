@@ -65,22 +65,21 @@ public class Utilities {
 				mLocation = location;
 				speed = location.getSpeed();
 				
-				//Log.e("LOCVER", "verificando por GPS la posicion " + mLocation.getLongitude() + "," + mLocation.getLatitude());
-				//Log.e("LIB", "onLocationChangeGPS");
+				
 			}
 
 			public void onProviderDisabled(String provider) {
 				// TODO Auto-generated method stub
 				iLocationStatus = GPSStatus();
 				gpsHandler.sendEmptyMessage(Constants.MUNI_GPSOFF);
-				//Log.e("LIB", "onProviderDisabledGPS");
+				
 			}
 
 			public void onProviderEnabled(String provider) {
 				// TODO Auto-generated method stub
 				iLocationStatus = GPSStatus();
 				gpsHandler.sendEmptyMessage(Constants.MUNI_GPSON);
-				//Log.e("LIB", "onProviderEnabledGPS");
+				
 			}
 
 
@@ -102,27 +101,25 @@ public class Utilities {
 					}
 					mLocation = location;
 					speed = location.getSpeed();
-					//Evaluar Geofences
-					//Log.e("MUNI", "verificando por RED la posicion " + mLocation.getLongitude() + "," + mLocation.getLatitude());
+					
 				}
 			}
 
 			public void onProviderDisabled(String provider) {
 				// TODO Auto-generated method stub
 				iLocationStatus = GPSStatus();
-				//Log.e("LIB", "onProviderDisabledNTW");
+				
 			}
 
 			public void onProviderEnabled(String provider) {
 				// TODO Auto-generated method stub
 				iLocationStatus = GPSStatus();
-					//Log.e("LIB", "onProviderEnabledNTW");
+					
 			}
 
 			public void onStatusChanged(String provider, int status,
 					Bundle extras) {
-				//Log.e("LIB", "onProviderChangedNTW");
-				// TODO Auto-generated method stub
+				
 			}
 		};
 		mLocationManagerGPS.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0,mLocationListenerGPS);	

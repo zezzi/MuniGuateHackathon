@@ -54,7 +54,7 @@ public class MuniApplication extends Application {
         mUtilities = new Utilities(getApplicationContext(), 5000,gpsHandler);
 		ctx = this;
 		edit = p.edit();
-        //VolleyHelper.init(getApplicationContext()); 	
+       	
         
 	}
 	
@@ -77,14 +77,10 @@ public class MuniApplication extends Application {
 	}
 	
 	public void setJSONReader(){
-		/*if (reader == null) {
-			reader = new JSONReader(getApplicationContext());
-		}*/
+		
 	}
 	
-	//public JSONReader getReader(){
-		//return this.reader;
-	//}
+	
 	
 	public void setDomain(String domain) {
 		this.domain = domain;

@@ -124,23 +124,7 @@ public class MainActivity extends ActionBarActivity {
                 mActionbar.addTab(tab);
                 
                 
-               
-              //  mActionbar.
-	
-        
-		//getSupportActionBar().setCustomView(R.layout.action_bar_custom);
-		/*appState = (MuniApplication)getApplicationContext(); 
-		db = appState.getDb();
-		Button iniciarActividad=(Button)findViewById(R.id.startActivityButton);
-		iniciarActividad.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-          		Intent intent = new Intent(appState,GPSActivity.class);
-          		Activities _e=buildFromClass();
-          		intent.putExtra("activity",_e.getId());
-          		db.insertActivity(_e);
-           	 	startActivity(intent);
-            }
-      });*/
+              
 		
 		
 	}
