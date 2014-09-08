@@ -39,12 +39,12 @@ public class MyFragmentPageAdapterMuni extends FragmentPagerAdapter{
 				
 			/** tab1 is selected */
 			case 2:
-				PremiosFragment fragment3 = new PremiosFragment();				
+				CustomizedListView fragment3 = new CustomizedListView();				
 				return fragment3;
 				
 			/** tab2 is selected */
 			case 3:
-				RankingFragment fragment4 = new RankingFragment();
+				RankingListView fragment4 = new RankingListView();
 				return fragment4;
 				
 			case 4:

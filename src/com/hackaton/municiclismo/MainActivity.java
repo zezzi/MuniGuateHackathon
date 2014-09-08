@@ -118,7 +118,7 @@ public class MainActivity extends ActionBarActivity {
                 mActionbar.addTab(tab);  
                 
                 tab = mActionbar.newTab()
-                        .setText("Parqueos")                               
+                        .setText("Servicios")                               
                         .setTabListener(tabListener);
 
                 mActionbar.addTab(tab);

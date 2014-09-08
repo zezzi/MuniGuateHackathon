@@ -15,19 +15,28 @@ import com.hackaton.municiclismo.util.Utilities;
 import com.hackaton.municiclismo.data.LatLong;
 
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class GPSActivity extends ActionBarActivity{
@@ -68,19 +77,13 @@ public class GPSActivity extends ActionBarActivity{
 		db = appState.getDb();
 		Bundle extras = getIntent().getExtras();
 		ActivityId = Integer.parseInt(extras.getString("activity"));
-     
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#89e02f")));
 		//Coloco mi posicion Actual
-		Location l = mUtilities.getPosition();
-		latitude=(TextView)findViewById(R.id.latitude);
-		longitude=(TextView)findViewById(R.id.logintud);
-		latitude.setText(l.getLatitude()+"");
-		longitude.setText(l.getLongitude()+"");
-		prevLat=l.getLatitude();
-		prevLon=l.getLongitude();
+		
 		timer = new Timer("alertTimer",true);
 		
 		//Inicializo el timer que ingresara las coordenandas cada 5 segundos
-		timer.scheduleAtFixedRate(new PeriodicAction(), 0, 3000);
+		//timer.scheduleAtFixedRate(new PeriodicAction(), 0, 3000);
 		
 		//Boton de Pausa falta reinicializar y cambiar el texto a start cuando pausa
 		cronometro = (TextView) findViewById(R.id.cronometro);
@@ -100,6 +103,22 @@ public class GPSActivity extends ActionBarActivity{
 
 			}
 		});
+		
+		
+		ImageButton notifyButton = (ImageButton) findViewById(R.id.wachButton);
+		notifyButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				stackNotification("estacionamiento", "geo:-45.54,-90.34?z=30", R.drawable.bikenot);
+				stackNotification("estacionamiento", "geo:-45.54,-90.34?z=30", R.drawable.bikenot);
+				stackNotification("estacionamiento", "geo:-45.54,-90.34?z=30", R.drawable.bikenot);
+				stackNotification("taller", "geo:-45.54,-90.34?z=30", R.drawable.wheelnot);
+				stackNotification("taller", "geo:-45.54,-90.34?z=30", R.drawable.wheelnot);
+				stackNotification("estacionamiento", "geo:-45.54,-90.34?z=30", R.drawable.parkingicon);
+				stackNotification("estacionamiento", "geo:-45.54,-90.34?z=30", R.drawable.parkingicon);
+
+			}
+		});
+		
 		
 		
 		//Debe parar el cronometro y preguntar si quiere terminar la ruta
@@ -139,6 +158,38 @@ public class GPSActivity extends ActionBarActivity{
 		
 	}
 	
+	// Suppor for android wear
+	private int notificationID=1;
+	final static String GROUP_KEY_PLACES = "group_key_places";
+	
+	public void stackNotification(String type, String location, int resourceId){
+		// -- Map Intent 
+		Intent mapIntent = new Intent(Intent.ACTION_VIEW);
+		Uri geoUri = Uri.parse(location);
+		PendingIntent mapPendingIntent = 
+				PendingIntent.getActivity(this, 0, mapIntent, 0);
+		
+		// -- Stack notifications
+		//Notification notif = new NotificationCompat.Builder(this)
+		Notification notif = new NotificationCompat.Builder(this)
+			.setContentTitle("Muni Reporte")
+			.setContentText("Hay un "+type+" cerca de ti")
+			.setSmallIcon(resourceId)
+			.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.munilogo))
+			//.setGroup(GROUP_KEY_PLACES)
+			.setContentIntent(mapPendingIntent)
+			.addAction(resourceId,"ver en mapa" ,mapPendingIntent)
+			.build();
+		
+		NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		notificationManager.notify(notificationID, notif);
+		notificationID++;
+		/*NotificationManager notificationManager = NotificationManager.from(this);
+		notificationManager.notify(notificationID, notif);
+		notificationID++;*/
+	}
+	
+	
 	private void moveMapToMyLocation() {
 	    LocationManager locationManager = (LocationManager)  this.getSystemService(Context.LOCATION_SERVICE);
 	    Criteria crit = new Criteria();
@@ -154,7 +205,7 @@ public class GPSActivity extends ActionBarActivity{
 	private class PeriodicAction extends TimerTask {
 		@Override
 		public void run() {
-			Log.d("FTRANS", "transmitio " + (new Date()).toString());
+			
 			try{
 				saveActualLocationInDB();
             }catch(Exception ex){
@@ -165,7 +216,7 @@ public class GPSActivity extends ActionBarActivity{
 	
 	private void saveActualLocationInDB() {
 			final Location location = mUtilities.getPosition();
-			Log.d("WTM","Latitude "+location.getLatitude()+" Longitud "+location.getLongitude());
+			
 			LatLong _c=new LatLong();
 			int cuenta=db.getLatLng("").getCount();
 			cuenta=cuenta+1;
@@ -191,7 +242,7 @@ public class GPSActivity extends ActionBarActivity{
 				/*double distanceInMeters=distance(prevLat,prevLon,location.getLatitude(),location.getLongitude());
 				*/
 				distanceTotal=distanceTotal+distanceInMeters;
-				Log.d("Distancia",distanceTotal+"");
+				
 				
 			}
 			runOnUiThread(new Runnable() {
@@ -211,6 +262,7 @@ public class GPSActivity extends ActionBarActivity{
 					prevLat=location.getLatitude();
 					prevLon=location.getLongitude();
 					i++;
+					
 			    }
 			});	
 	}
@@ -239,30 +291,13 @@ public class GPSActivity extends ActionBarActivity{
 			int minutes = seconds / 60;
 			seconds = seconds % 60;
 			int milliseconds = (int) (finalTime % 1000);
+			
 			cronometro.setText("" + minutes + ":"+ String.format("%02d", seconds) ); //+ ":"+ String.format("%02d", milliseconds));
 			myHandler.postDelayed(this, 0);
 		}
 
 	};
 	
-	
-	//Va en ON CREATE si quiero mapa
-	/*map =((MapFragment)getFragmentManager().findFragmentById(R.id.map)).getMap();
-    map.setMyLocationEnabled(true);
-    if (map!=null){
-    	Log.d("entra ", "entra mapa");
-    
-    		moveMapToMyLocation();
-    	map.setMapType(GoogleMap.MAP_TYPE_NORMAL);       	
-    }*/
-	/*Button iniciarActividad=(Button)findViewById(R.id.startActivityButton);
-	iniciarActividad.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View v) {
-      	  
-      		Intent intent = new Intent(appState,GPSActivity.class);
-       	 	startActivity(intent);
-        }
-  });*/
 	
 	
 }

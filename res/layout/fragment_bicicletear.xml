@@ -48,7 +48,12 @@
 
 	</LinearLayout>
      </LinearLayout>
-
+<View
+      android:layout_width="fill_parent"
+      android:layout_height="7dp"
+      android:layout_centerVertical="true"
+     android:background="#a0a0a0"
+      />
      <ListView
          android:id="@+id/datosK"
          android:layout_width="match_parent"

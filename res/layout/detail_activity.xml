@@ -3,10 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee"
+     android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     android:orientation="vertical" >
-
+    <ScrollView 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="211dp"
         android:background="#eeeeee"
         android:orientation="vertical" >
@@ -38,7 +48,7 @@
 	
 	 <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="#eeeeee"
     android:layout_marginTop="10dp"
     android:layout_weight="2"
@@ -75,7 +85,7 @@
     </LinearLayout>
     <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="#eeeeee"
     android:layout_weight="2"
     android:orientation="horizontal" >
@@ -111,7 +121,7 @@
     </LinearLayout>
     <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="#eeeeee"
     android:layout_weight="2"
     android:orientation="horizontal" >
@@ -151,7 +161,7 @@
     
     <LinearLayout
     android:layout_width="fill_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:background="#eeeeee"
     
     android:layout_weight="2"
@@ -189,25 +199,38 @@
     </LinearLayout>
     <LinearLayout
     android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
     android:background="#eeeeee"
-    android:orientation="horizontal" >
-
-    <EditText
-        android:id="@+id/Ingresar Comentario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    android:orientation="vertical" >
+<EditText
+        android:id="@+id/comentInsert"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
         android:layout_weight="1"
-        android:ems="10" >
-        <requestFocus />
+        
+        android:hint="Comentar"
+        >
+      
     </EditText>
      <Button
             android:id="@+id/addComent"
-            android:layout_width="250dp"
+            android:layout_width="fill_parent"
             android:background="@drawable/select_km_button"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
            
             android:text="Submit" />
+     
+     
+     <TextView
+          android:id="@+id/commentAuthor"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:textColor="#2c73c4"
+          android:text="herbert"
+          android:textSize="16dp" />
 
       <TextView
           android:id="@+id/comment1"
@@ -216,8 +239,25 @@
           android:layout_margin="10dp"
           android:text="Muy Buen Establecimiento me encanto estar en el lugar"
           android:textSize="16dp" />
+      <TextView
+          android:id="@+id/commentAuthor2"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:textColor="#2c73c4"
+          android:text="Andres"
+          android:textSize="16dp" />
+      
+      <TextView
+          android:id="@+id/comment2"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="10dp"
+          android:text="Muy Buen Establecimiento me encanto estar en el lugar"
+          android:textSize="16dp" />
+    
        
      </LinearLayout>
-	
-
+	</LinearLayout>
+</ScrollView>
 </LinearLayout>

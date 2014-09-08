@@ -46,6 +46,7 @@
           <activity android:name="com.hackaton.municiclismo.Notifications"></activity>
           <activity android:name="com.hackaton.municiclismo.RouteActivity"></activity>
            <activity android:name="com.hackaton.municiclismo.DetailActivity"></activity>
+            <activity android:name="com.hackaton.municiclismo.SeleccionarPerfil"></activity>
          <meta-data
     android:name="com.google.android.gms.version"
     android:value="@integer/google_play_services_version" />
